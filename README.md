@@ -3,7 +3,7 @@ config terbaru dari master wifi network solution
 
 Untuk download, anda bisa menekan link di bawah ini.
 
-[Download](https://www.masterwifinetworksolution.tech)
+[Download](https://ponselharian.com/VZvHHfVB)
 
 Taruh file *simaster-v1.5.yaml* di luar folder openclash, terus di folder backup dan folder config.
 
