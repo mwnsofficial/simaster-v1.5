@@ -17,3 +17,5 @@ Pastikan anda sudah restore file backup simaster-v1.4
 [Download](http://stoodsef.com/5QFX) file simaster-v1.4
 
 Semoga berhasil dan selamat berselancar. 
+
+[Kembali Ke Beranda](https://mwnsofficial.github.io/masterconfig.github.io/)
