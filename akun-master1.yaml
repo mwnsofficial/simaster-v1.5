@@ -1,0 +1,15 @@
+proxies:
+- name: MASTER1
+  server: id1-masterwifi.tech
+  port: 443
+  type: trojan
+  password: 9adb6e2e-8d86-4c3f-b653-8a03367e939f
+  network: ws
+  sni: id1-masterwifi.tech
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /master
+    headers:
+      Host: bug-tselmu.com
