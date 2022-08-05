@@ -1,4 +1,3 @@
-
 ---
 port: 7890
 socks-port: 7891
@@ -89,6 +88,7 @@ dns:
   - 1.1.1.1
   - 1.0.0.1
   - https://cloudflare.com/dns-query
+  - https://google.com/dns-query
   fallback:
   - https://dns.cloudflare.com/dns-query
   - https://1.1.1.1/dns-query
@@ -109,43 +109,46 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
       interval: 99
 proxy-groups:
- - name: SIMASTER-LOADBALANCE
-   type: load-balance
-   strategy: round-robin
-   disable-udp: false
-   proxies:
-   - WAN1
-   - WAN2
-   url: http://www.gstatic.com/generate_204
-   interval: '99'
- - name: WAN1
-   type: select
-   disable-udp: false
-   use:
-   - MASTER1
-   proxies:
-   - DIRECT
-   url: http://www.gstatic.com/generate_204
-   interval: '99'
- - name: WAN2
-   type: select
-   disable-udp: false
-   use:
-   - MASTER2
-   proxies:
-   - DIRECT
-   url: http://www.gstatic.com/generate_204
-   interval: '99'
- - name: PORT-GAME
-   type: select
-   disable-udp: false
-   use:
-   - MASTER1
-   - MASTER2
-   proxies:
-   - DIRECT
-   url: http://www.gstatic.com/generate_204
-   interval: '99'
+- name: SIMASTER-LOADBALANCE
+  type: load-balance
+  strategy: round-robin
+  disable-udp: false
+  proxies:
+  - WAN1
+  - WAN2
+  url: http://www.gstatic.com/generate_204
+  interval: '99'
+  interface-name: eth0
+- name: WAN1
+  type: select
+  disable-udp: false
+  use:
+  - MASTER1
+  proxies:
+  - DIRECT
+  url: http://www.gstatic.com/generate_204
+  interval: '99'
+  interface-name: eth1
+- name: WAN2
+  type: select
+  disable-udp: false
+  use:
+  - MASTER2
+  proxies:
+  - DIRECT
+  url: http://www.gstatic.com/generate_204
+  interval: '99'
+  interface-name: eth2
+- name: PORT-GAME
+  type: select
+  disable-udp: false
+  use:
+  - MASTER1
+  - MASTER2
+  proxies:
+  - DIRECT
+  url: http://www.gstatic.com/generate_204
+  interval: '99'
 rule-providers:
   Master-Umum:
     type: file
