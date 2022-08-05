@@ -1,4 +1,4 @@
-# CONFIF SIMASTER V1.5
+# CONFIG SIMASTER V1.5
 config terbaru dari master wifi network solution
 
 Untuk download, anda bisa menekan link di bawah ini.
