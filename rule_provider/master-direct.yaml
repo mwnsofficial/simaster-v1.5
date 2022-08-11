@@ -8,10 +8,16 @@ payload:
   # JANGAN LUPA KUNJUNGI WEB RESMI DI https://www.masterwifinetworksolution.tech
   
   # > JALUR DIRECT TSEL
-  - tiktok.com
-  - tiktokv.com
-  - tiktokcdn.com
-  - whatsapp.com
-  - whatsapp.net"
+  - DOMAIN-KEYWORD,tiktok
+  - DOMAIN-KEYWORD,tiktokv
+  - DOMAIN-KEYWORD,tiktokcdn
+  - DOMAIN-KEYWORD,whatsapp
+  - DOMAIN-KEYWORD,line
 
   # > JALUR DIRECT XL
+  - DOMAIN-KEYWORD,ruangguru
+  - DOMAIN-KEYWORD,zenius
+  - DOMAIN-KEYWORD,udemy
+  - DOMAIN-KEYWORD,meet
+  - DOMAIN-KEYWORD,maps
+  - DOMAIN-KEYWORD,gojek
