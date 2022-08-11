@@ -52,3 +52,13 @@ payload:
   - DOMAIN-KEYWORD,alibaba
   - DOMAIN-KEYWORD,amazon
   - DOMAIN-KEYWORD,shopify
+
+  # > STREAMING 
+  - DOMAIN-KEYWORD,netflix
+  - DOMAIN-KEYWORD,amazon
+  - DOMAIN-KEYWORD,smule
+  - DOMAIN-KEYWORD,starmakerstudios
+  - DOMAIN-KEYWORD,deezer
+  - DOMAIN-KEYWORD,langitmusik
+  - DOMAIN-KEYWORD,spotify
+  - DOMAIN-KEYWORD,joox
