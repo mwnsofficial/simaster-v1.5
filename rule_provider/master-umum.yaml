@@ -10,7 +10,7 @@ payload:
   # > FAMILY FACEBOOK
   - DOMAIN-KEYWORD,facebook
   - DOMAIN-KEYWORD,fb
-  - DOMAIN-KEYWORD,fbcdn.netDOMAIN-KEYWORD,
+  - DOMAIN-KEYWORD,fbcdn
   - DOMAIN-KEYWORD,fbsx
   - DOMAIN-KEYWORD,facebookmail
   - DOMAIN-KEYWORD,oculus
@@ -20,7 +20,7 @@ payload:
   
   # > YOUTUBE
   - DOMAIN-KEYWORD,youtube
-  - DOMAIN-KEYWORD,youtu.beDOMAIN-KEYWORD,
+  - DOMAIN-KEYWORD,youtu
   - DOMAIN-KEYWORD,googlevideo
   - DOMAIN-KEYWORD,googleapis
   - DOMAIN-KEYWORD,ggpht
