@@ -8,8 +8,10 @@ payload:
   # JANGAN LUPA KUNJUNGI WEB RESMI DI https://www.masterwifinetworksolution.tech
   
   # > JALUR DIRECT TSEL
-  - "+.tiktok.com"
-  - "+.tiktokv.com"
-  - "+.tiktokcdn.com"
-  - "+.whatsapp.com"
-  - "+.whatsapp.net"
+  - tiktok.com
+  - tiktokv.com
+  - tiktokcdn.com
+  - whatsapp.com
+  - whatsapp.net"
+
+  # > JALUR DIRECT XL
