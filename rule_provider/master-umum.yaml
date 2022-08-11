@@ -38,3 +38,17 @@ payload:
   - DOMAIN-KEYWORD,yandex
   - DOMAIN-KEYWORD,opera
   - DOMAIN-KEYWORD,mozilla
+  
+  # > UMUM
+  - DOMAIN-KEYWORD,grab
+  - DOMAIN-KEYWORD,shopee
+  - DOMAIN-KEYWORD,airpay
+  - DOMAIN-KEYWORD,shopeemobile
+  - DOMAIN-KEYWORD,lazada
+  - DOMAIN-KEYWORD,bukalapak
+  - DOMAIN-KEYWORD,tokopedia
+  - DOMAIN-KEYWORD,blibli
+  - DOMAIN-KEYWORD,alicdn
+  - DOMAIN-KEYWORD,alibaba
+  - DOMAIN-KEYWORD,amazon
+  - DOMAIN-KEYWORD,shopify
