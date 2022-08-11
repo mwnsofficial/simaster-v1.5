@@ -1,21 +1,30 @@
-# CONFIG SIMASTER V1.5
-config terbaru dari master wifi network solution
+# INFORMASI
+> RULE INI MURNI MASTERWIFI BUATKAN UNTUK ANDA TANPA COPY PASTE DARI MILIK ORANG LAIN
+> TETAP HARGAI KARYA MASTERWIFI DENGAN CARA LIKE, KOMEN, DAN SUBSCRIBE CHANNEL YOUTUBE Master Wi-Fi Network Solution
+> YANG INGIN DONASI SILAHKAN MELALUI SHOPEEPAY 087737659957
+> ATAU BISA MELALUI TRANSFER BANK KE BRI 453401017095532 an MUHAMMAD YUSUF
+> JANGAN LUPA KUNJUNGI WEB RESMI DI https://www.masterwifinetworksolution.tech
 
-Untuk download, anda bisa menekan link di bawah ini.
+## Cara penggunaan
 
-[Download](https://ponselharian.com/VZvHHfVB)
+Setelah anda berhasil download dan ekstrak file.
+Anda bisa memasukkan file sesuai dengan nama folder nya
 
-Taruh file *simaster-v1.5.yaml* di luar folder openclash, terus di folder backup dan folder config.
+tempat edit dan isi akun ada di folder proxy_provider
+untuk menambahkan rule kalian bisa masukkan di folder rule_provider
 
-Taruh file *akun1* dan *akun2* di folder proxy_provider
+mode script sangat wajib untuk config ini namun juga support ke rule dengan versi meta
 
-Taruh sisa file lain nya di folder *rule_provider*
+untuk aktifkan meta, anda hanya perlu aktifkan ceklis di menu global setting lalu meta, centang hanya meta sama sniffer saja.
 
-Untuk system operasional lain sebelum anda upload semua file config baru ini.
-Pastikan anda sudah restore file backup simaster-v1.4
+untuk merubah mode redir ke fakeip ada di menu global setting bagian halaman utama lalu geser ke paling bawah sampai ada terlihat tulisan
 
-[Download](http://stoodsef.com/5QFX) file simaster-v1.4
+switch page to fake ip
 
-Semoga berhasil dan selamat berselancar. 
+pilih mix dan mode script kalo meta pilih saja mode rule
 
-[Kembali Ke Beranda](https://mwnsofficial.github.io/masterconfig.github.io/)
+jika anda pengen isi akun otomatis namun tidak ingin ngisi di proxy_provider di config editor
+
+anda bisa tempelkan link akun anda di menu server grup pada bagian proxies 
+
+lalu matikan ceklis pada bagian ke dua proxy provider lalu coomit dan apply
