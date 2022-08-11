@@ -87,12 +87,15 @@ dns:
   nameserver:
   - 1.1.1.1
   - 1.0.0.1
-  - https://cloudflare.com/dns-query
-  - https://google.com/dns-query
+  - https://dns.cloudflare.com/dns-query
+  - https://dns.google/dns-query
+  - tls://1dot1dot1dot1.cloudflare-dns.com
+  - tls://dns.google
   fallback:
   - https://dns.cloudflare.com/dns-query
-  - https://1.1.1.1/dns-query
-  - tls://1.1.1.1:853
+  - https://dns.google/dns-query
+  - tls://1dot1dot1dot1.cloudflare-dns.com
+  - tls://dns.google
 proxy-providers:
   MASTER1:
     type: file
@@ -109,33 +112,31 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
       interval: 99
 proxy-groups:
-- name: SIMASTER-LOADBALANCE
+- name: SIMASTER-V1.5
   type: load-balance
   strategy: round-robin
   disable-udp: false
   proxies:
-  - WAN1
-  - WAN2
+  - WANA
+  - WANB
   url: http://www.gstatic.com/generate_204
   interval: '99'
   interface-name: eth0
-- name: WAN1
-  type: select
+- name: WANA
+  type: load-balance
+  strategy: round-robin
   disable-udp: false
   use:
   - MASTER1
-  proxies:
-  - DIRECT
   url: http://www.gstatic.com/generate_204
   interval: '99'
   interface-name: eth1
-- name: WAN2
-  type: select
+- name: WANB
+  type: load-balance
+  strategy: round-robin
   disable-udp: false
   use:
   - MASTER2
-  proxies:
-  - DIRECT
   url: http://www.gstatic.com/generate_204
   interval: '99'
   interface-name: eth2
@@ -143,8 +144,7 @@ proxy-groups:
   type: select
   disable-udp: false
   use:
-  - MASTER1
-  - MASTER2
+  - SIMASTER-V1.5
   proxies:
   - DIRECT
   url: http://www.gstatic.com/generate_204
@@ -154,22 +154,10 @@ rule-providers:
     type: file
     behavior: domain
     path: "./rule_provider/master-umum.yaml"
-  Master-Umum-Wan1:
+  Master-Direct:
     type: file
     behavior: domain
-    path: "./rule_provider/umum-wan1.yaml"
-  Master-Umum-Wan2:
-    type: file
-    behavior: domain
-    path: "./rule_provider/umum-wan2.yaml"
-  Master-Direct-Wan1:
-    type: file
-    behavior: domain
-    path: "./rule_provider/direct-wan1.yaml"
-  Master-Direct-Wan2:
-    type: file
-    behavior: domain
-    path: "./rule_provider/direct-wan2.yaml"
+    path: "./rule_provider/master-direct.yaml"
   Master-Game:
     type: file
     behavior: domain
@@ -177,31 +165,28 @@ rule-providers:
 script:
   code: |
     def main(ctx, metadata):
-        ruleset_action = {"Master-Umum": "SIMASTER-LOADBALANCE",
-            "Master-Umum-Wan1": "WAN1",
-            "Master-Umum-Wan1": "WAN2",
-            "Master-Direct-Wan1": "DIRECT",
-            "Master-Direct-Wan2": "DIRECT",
+        ruleset_action = {"Master-Umum": "SIMASTER-V1.5",
+            "Master-Direct": "DIRECT",
             "Master-Game": "PORT-GAME",
           }
 
         port = int(metadata["dst_port"])
 
         if metadata["network"] == "UDP":
-            if port == "21,22,23,53,80,81,443,853,5353,8000,8008,8080,8081,8090,8443,8888":
-                ctx.log('[Script] matched QUIC traffic use SIMASTER-LOADBALANCE')
-                return "SIMASTER-LOADBALANCE"
+            if port == "20,21,22,23,25,53,80,81,123,443,853,5353,7100,7200,7300,7900,8000,8008,8080,8081,8090,8443,8888":
+                ctx.log('[Script] matched QUIC traffic use SIMASTER-V1.5')
+                return "SIMASTER-V1.5"
 
         if metadata["dst_ip"] == "":
             metadata["dst_ip"] = ctx.resolve_ip(metadata["host"])
 
-        port_list = [21, 22, 23, 53, 80, 81, 443, 853, 5353, 8000, 8008, 8080, 8081, 8090, 8443, 8888]
+        port_list = [20, 21, 22, 23, 25, 53, 80, 81, 123, 443, 853, 5353, 7100, 7200, 7300, 7900, 8000, 8008, 8080, 8081, 8090, 8443, 8888]
         if port not in port_list:
             ctx.log('[Script] not common port use PORT-GAME')
             return "PORT-GAME"
 
         if metadata["dst_ip"] == "":
-            return "SIMASTER-LOADBALANCE"
+            return "SIMASTER-V1.5"
 
         for ruleset in ruleset_action:
             if ctx.rule_providers[ruleset].match(metadata):
@@ -210,27 +195,26 @@ script:
         code = ctx.geoip(metadata["dst_ip"])
         if code == "ID":
             ctx.log('[Script] Geoip ID')
-            return "SIMASTER-LOADBALANCE"
+            return "SIMASTER-V1.5"
 
-        ctx.log('[Script] SIMASTER-LOADBALANCE')
-        return "SIMASTER-LOADBALANCE"
+        ctx.log('[Script] SIMASTER-V1.5')
+        return "SIMASTER-V1.5"
 rules:
 - IP-CIDR,198.18.0.1/16,REJECT,no-resolve
-- RULE-SET,Master-Umum,SIMASTER-LOADBALANCE
-- RULE-SET,Master-Umum-Wan1,WAN1
-- RULE-SET,Master-Umum-Wan2,WAN2
-- RULE-SET,Master-Direct-Wan1,DIRECT
-- RULE-SET,Master-Direct-Wan2,DIRECT
-- GEOIP,ID,SIMASTER-LOADBALANCE
-- MATCH,SIMASTER-LOADBALANCE
+- RULE-SET,Master-Umum,SIMASTER-V1.5
+- RULE-SET,Master-Direct,DIRECT
+- GEOIP,ID,SIMASTER-V1.5
+- MATCH,SIMASTER-V1.5
 tun:
   enable: true
   stack: system
   auto-route: false
   auto-detect-interface: false
+  macOS-auto-route: true
+  macOS-auto-detect-interface: true
   dns-hijack:
-  - tcp://8.8.8.8:53
-  - tcp://8.8.4.4:53
+  - any:53
+  - tcp://any:53
 profile:
   store-selected: true
   store-fake-ip: true
