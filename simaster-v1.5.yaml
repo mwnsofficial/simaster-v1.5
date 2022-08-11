@@ -152,15 +152,15 @@ proxy-groups:
 rule-providers:
   Master-Umum:
     type: file
-    behavior: domain
+    behavior: classical
     path: "./rule_provider/master-umum.yaml"
   Master-Direct:
     type: file
-    behavior: domain
+    behavior: classical
     path: "./rule_provider/master-direct.yaml"
   Master-Game:
     type: file
-    behavior: domain
+    behavior: classical
     path: "./rule_provider/master-game.yaml"
 script:
   code: |
