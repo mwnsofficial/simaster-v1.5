@@ -1,0 +1,48 @@
+
+config interface 'loopback'
+	option device 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config globals 'globals'
+	option ula_prefix 'fdd3:3c73:a329::/48'
+
+config device
+	option name 'br-lan'
+	option type 'bridge'
+	list ports 'eth0'
+
+config interface 'lan'
+	option proto 'static'
+	option netmask '255.255.255.0'
+	option ip6assign '60'
+	list dns '8.8.8.8'
+	list dns '8.8.4.4'
+	option ipaddr '192.168.10.1'
+	option device 'eth0'
+
+config interface 'wanb'
+	option proto 'dhcp'
+	option metric '20'
+	option peerdns '0'
+	list dns '192.168.8.1'
+	option device 'usb0'
+
+config interface 'wana'
+	option proto 'dhcp'
+	option device 'eth1'
+	option metric '30'
+
+config interface 'wwan'
+	option proto 'dhcp'
+	option device 'wlan0'
+	option metric '10'
+
+config device
+	option type 'bridge'
+	option name 'br-wan'
+	list ports 'usb0'
+	list ports 'wwan0'
+	option bridge_empty '1'
+
