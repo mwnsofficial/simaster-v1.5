@@ -1,0 +1,15 @@
+proxies:
+- name: MASTER1
+  server: insert-sni.com
+  port: 443
+  type: trojan
+  password: 48e24420-1be7-11ed-b83a-1239d0255272
+  sni: id1-masterwifi.tech
+  skip-cert-verify: true
+  udp: true
+  network: ws
+  ws-opts:
+    path: /howdy
+    headers:
+      Host: id1-masterwifi.tech
+  interface-name: wlan0
